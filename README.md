@@ -22,14 +22,14 @@ $$ L(x,y) = f(x) + y^T(Ax - b) $$
 $$ g(y) = \inf_x L(x,y) $$
 
 ### 1.2 对偶上升法
-对偶问题：$\max_y g(y)$
+对偶问题： $\max_y g(y)$
 
 **算法步骤**：
-1. $x$-更新：$x^{k+1} = \argmin_x L(x,y^k)$
-2. 对偶更新：$y^{k+1} = y^k + \alpha^k (Ax^{k+1} - b)$
+1. $x$-更新： $x^{k+1} = \argmin_x L(x,y^k)$
+2. 对偶更新： $y^{k+1} = y^k + \alpha^k (Ax^{k+1} - b)$
 
 ### 1.3 对偶分解
-当目标函数可分时（$f(x)=\sum_i f_i(x_i)$），拉格朗日函数可分解：
+当目标函数可分时（ $f(x)=\sum_i f_i(x_i)$ ），拉格朗日函数可分解：
 $$ L(x,y) = \sum_i \left[ f_i(x_i) + y^TA_ix_i \right] - y^Tb $$
 
 **分布式计算**：
@@ -44,8 +44,8 @@ $$ L(x,y) = \sum_i \left[ f_i(x_i) + y^TA_ix_i \right] - y^Tb $$
 $$ L_\rho(x,y) = f(x) + y^T(Ax-b) + \frac{\rho}{2}\|Ax-b\|_2^2 $$
 
 **算法步骤**：
-1. $x$-更新：$x^{k+1} = \argmin_x L_\rho(x,y^k)$
-2. 对偶更新：$y^{k+1} = y^k + \rho(Ax^{k+1}-b)$
+1. $x$ -更新： $x^{k+1} = \argmin_x L_\rho(x,y^k)$
+2. 对偶更新： $y^{k+1} = y^k + \rho(Ax^{k+1}-b)$
 
 ### 2.2 优缺点
 - 优点：收敛条件更宽松
@@ -66,12 +66,12 @@ $$ L_\rho(x,y) = f(x) + y^T(Ax-b) + \frac{\rho}{2}\|Ax-b\|_2^2 $$
 $$ L_\rho(x,z,y) = f(x)+g(z)+y^T(Ax+Bz-c)+\frac{\rho}{2}\|Ax+Bz-c\|_2^2 $$
 
 ### 3.2 算法步骤
-1. $x$-更新：$x^{k+1} = \argmin_x L_\rho(x,z^k,y^k)$
-2. $z$-更新：$z^{k+1} = \argmin_z L_\rho(x^{k+1},z,y^k)$
-3. 对偶更新：$y^{k+1} = y^k + \rho(Ax^{k+1}+Bz^{k+1}-c)$
+1. $x$ -更新： $x^{k+1} = \argmin_x L_\rho(x,z^k,y^k)$
+2. $z$ -更新： $z^{k+1} = \argmin_z L_\rho(x^{k+1},z,y^k)$
+3. 对偶更新： $y^{k+1} = y^k + \rho(Ax^{k+1}+Bz^{k+1}-c)$
 
 ### 3.3 缩放形式
-令 $u = y/\rho$，得到缩放形式：
+令 $u = y/\rho$ ，得到缩放形式：
 
 $$
 \begin{aligned}
@@ -87,23 +87,23 @@ $$
 2. 增广拉格朗日存在鞍点
 
 **收敛结果**：
-- 残差收敛：$Ax^k+Bz^k-c \to 0$
-- 目标值收敛：$f(x^k)+g(z^k) \to p^*$
+- 残差收敛： $Ax^k+Bz^k-c \to 0$
+- 目标值收敛： $f(x^k)+g(z^k) \to p^*$
 
 ## 4. 常见函数更新
 
 ### 4.1 可分函数
 当 $f(x)=\sum_i f_i(x_i)$ 且 $A^TA$ 块对角时：
-- $x^+$-更新可分解为并行子问题
+- $x^+$ -更新可分解为并行子问题
 
 ### 4.2 近端算子
-当 $A=I$ 时，$x$更新为：
+当 $A=I$ 时， $x$ 更新为：
 
 $$ \text{prox}_{f,\rho}(v) = \argmin_x \left( f(x) + \frac{\rho}{2}\|x-v\|_2^2 \right) $$
 
 **特例**：
-1. 投影：$f=I_C \Rightarrow \Pi_C(v)$
-2. L1正则：$f=\lambda\|\cdot\|_1 \Rightarrow$ 软阈值 $S_{\lambda/\rho}(v_i)$
+1. 投影： $f=I_C \Rightarrow \Pi_C(v)$
+2. L1正则： $f=\lambda\|\cdot\|_1 \Rightarrow$ 软阈值 $S_{\lambda/\rho}(v_i)$
 
 ### 4.3 二次目标
 当 $f(x)=\frac{1}{2}x^TPx+q^Tx+r$ 时：
@@ -119,7 +119,7 @@ $$ x^+ = (P+\rho A^TA)^{-1}(\rho A^Tv - q) $$
 
 $$ \min \frac{1}{2}\|Ax-b\|_2^2 + \lambda\|z\|_1 \quad \text{s.t.} \ x-z=0 $$
 
-相当于$f(x)$为二次目标，$f(z)$为L1正则。ADMM步骤：
+相当于 $f(x)$ 为二次目标， $f(z)$ 为L1正则。ADMM步骤：
 
 $$
 \begin{aligned}
