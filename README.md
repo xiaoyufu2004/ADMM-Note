@@ -30,11 +30,12 @@ $$ g(y) = \inf_x L(x,y) $$
 
 ### 1.3 对偶分解
 当目标函数可分时（ $f(x)=\sum_i f_i(x_i)$ ），拉格朗日函数可分解：
+
 $$ L(x,y) = \sum_i \left[ f_i(x_i) + y^TA_ix_i \right] - y^Tb $$
 
 **分布式计算**：
-1. 各节点并行计算：$x_i^{k+1} = \argmin_{x_i} L_i(x_i,y^k)$
-2. 中心节点聚合：$y^{k+1} = y^k + \alpha^k (\sum_i A_ix_i^{k+1} - b)$
+1. 各节点并行计算： $x_i^{k+1} = \argmin_{x_i} L_i(x_i,y^k)$
+2. 中心节点聚合： $y^{k+1} = y^k + \alpha^k (\sum_i A_ix_i^{k+1} - b)$
 
 ## 2. 乘子法
 
