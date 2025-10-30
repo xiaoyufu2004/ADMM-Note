@@ -48,7 +48,8 @@ $$ L_\rho(x,y) = f(x) + y^T(Ax-b) + \frac{\rho}{2}\|Ax-b\|_2^2 $$
 1.  $x$ -更新：
 
 $$x^{k+1} = \text{argmin}_x L_\rho(x,y^k)$$
-3. 对偶更新：  
+
+2. 对偶更新：  
 
 $$y^{k+1} = y^k + \rho(Ax^{k+1}-b)$$
 
@@ -117,7 +118,7 @@ $$ \text{prox}_{f,\rho}(v) = \text{argmin}_x \left( f(x) + \frac{\rho}{2}\|x-v\|
 
 **特例**：
 1. 投影： $f=I_C \Rightarrow \Pi_C(v)$
-2. L1正则： $f=\lambda\|\cdot\|_1 \Rightarrow $ 软阈值 $ S_{\lambda/\rho}(v_i)$
+2. L1正则
 
 ### 4.3 二次目标
 当 $f(x)=\frac{1}{2}x^TPx+q^Tx+r$ 时：
