@@ -25,7 +25,7 @@ $$ g(y) = \inf_x L(x,y) $$
 对偶问题： $\max_y g(y)$
 
 **算法步骤**：
-1.  $x$ -更新：  $x^{k+1} = {argmin}_x L(x,y^k)$
+1.  $x$ -更新：  $x^{k+1} = \text{argmin}_x L(x,y^k)$
 2. 对偶更新：  $y^{k+1} = y^k + \alpha^k (Ax^{k+1} - b)$
 
 ### 1.3 对偶分解
@@ -34,7 +34,7 @@ $$ g(y) = \inf_x L(x,y) $$
 $$ L(x,y) = \sum_i \left[ f_i(x_i) + y^TA_ix_i \right] - y^Tb $$
 
 **分布式计算**：
-1. 各节点并行计算：  $x_i^{k+1} = {argmin}_{x_i} L_i(x_i,y^k)$
+1. 各节点并行计算：  $x_i^{k+1} = \text{argmin}_{x_i} L_i(x_i,y^k)$
 2. 中心节点聚合：  $y^{k+1} = y^k + \alpha^k (\sum_i A_ix_i^{k+1} - b)$
 
 ## 2. 乘子法
@@ -45,7 +45,7 @@ $$ L(x,y) = \sum_i \left[ f_i(x_i) + y^TA_ix_i \right] - y^Tb $$
 $$ L_\rho(x,y) = f(x) + y^T(Ax-b) + \frac{\rho}{2}\|Ax-b\|_2^2 $$
 
 **算法步骤**：
-1.  $x$ -更新：  $x^{k+1} = {argmin}_x L_\rho(x,y^k)$
+1.  $x$ -更新：  $x^{k+1} = \text{argmin}_x L_\rho(x,y^k)$
 2. 对偶更新：  $y^{k+1} = y^k + \rho(Ax^{k+1}-b)$
 
 ### 2.2 优缺点
@@ -68,8 +68,8 @@ $$ L_\rho(x,y) = f(x) + y^T(Ax-b) + \frac{\rho}{2}\|Ax-b\|_2^2 $$
 $$ L_\rho(x,z,y) = f(x)+g(z)+y^T(Ax+Bz-c)+\frac{\rho}{2}\|Ax+Bz-c\|_2^2 $$
 
 ### 3.2 算法步骤
-1.  $x$ -更新：  $x^{k+1} = {argmin}_x L_\rho(x,z^k,y^k)$
-2.  $z$ -更新：  $z^{k+1} = {argmin}_z L_\rho(x^{k+1},z,y^k)$
+1.  $x$ -更新：  $x^{k+1} = \text{argmin}_x L_\rho(x,z^k,y^k)$
+2.  $z$ -更新：  $z^{k+1} = \text{argmin}_z L_\rho(x^{k+1},z,y^k)$
 3. 对偶更新：  $y^{k+1} = y^k + \rho(Ax^{k+1}+Bz^{k+1}-c)$
 
 ### 3.3 缩放形式
@@ -77,8 +77,8 @@ $$ L_\rho(x,z,y) = f(x)+g(z)+y^T(Ax+Bz-c)+\frac{\rho}{2}\|Ax+Bz-c\|_2^2 $$
 
 $$
 \begin{aligned}
-x^{k+1} &= {argmin}_x \left( f(x) + \frac{\rho}{2}\|Ax+Bz^k-c+u^k\|_2^2 \right) \\
-z^{k+1} &= {argmin}_z \left( g(z) + \frac{\rho}{2}\|Ax^{k+1}+Bz-c+u^k\|_2^2 \right) \\
+x^{k+1} &= \text{argmin}_x \left( f(x) + \frac{\rho}{2}\|Ax+Bz^k-c+u^k\|_2^2 \right) \\
+z^{k+1} &= \text{argmin}_z \left( g(z) + \frac{\rho}{2}\|Ax^{k+1}+Bz-c+u^k\|_2^2 \right) \\
 u^{k+1} &= u^k + (Ax^{k+1}+Bz^{k+1}-c)
 \end{aligned}
 $$
@@ -101,7 +101,7 @@ $$
 ### 4.2 近端算子
 当 $A=I$ 时， $x$ 更新为：
 
-$$ \text{prox}_{f,\rho}(v) = \argmin_x \left( f(x) + \frac{\rho}{2}\|x-v\|_2^2 \right) $$
+$$ \text{prox}_{f,\rho}(v) = \text{argmin}_x \left( f(x) + \frac{\rho}{2}\|x-v\|_2^2 \right) $$
 
 **特例**：
 1. 投影： $f=I_C \Rightarrow \Pi_C(v)$
