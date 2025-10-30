@@ -45,8 +45,12 @@ $$ L(x,y) = \sum_i \left[ f_i(x_i) + y^TA_ix_i \right] - y^Tb $$
 $$ L_\rho(x,y) = f(x) + y^T(Ax-b) + \frac{\rho}{2}\|Ax-b\|_2^2 $$
 
 **算法步骤**：
-1.  $x$ -更新：  $x^{k+1} = \text{argmin}_x L_\rho(x,y^k)$
-2. 对偶更新：  $y^{k+1} = y^k + \rho(Ax^{k+1}-b)$
+1.  $x$ -更新：
+
+$$x^{k+1} = \text{argmin}_x L_\rho(x,y^k)$$
+3. 对偶更新：  
+
+$$y^{k+1} = y^k + \rho(Ax^{k+1}-b)$$
 
 ### 2.2 优缺点
 - 优点：收敛条件更宽松
@@ -68,9 +72,17 @@ $$ L_\rho(x,y) = f(x) + y^T(Ax-b) + \frac{\rho}{2}\|Ax-b\|_2^2 $$
 $$ L_\rho(x,z,y) = f(x)+g(z)+y^T(Ax+Bz-c)+\frac{\rho}{2}\|Ax+Bz-c\|_2^2 $$
 
 ### 3.2 算法步骤
-1.  $x$ -更新：  $x^{k+1} = \text{argmin}_x L_\rho(x,z^k,y^k)$
-2.  $z$ -更新：  $z^{k+1} = \text{argmin}_z L_\rho(x^{k+1},z,y^k)$
-3. 对偶更新：  $y^{k+1} = y^k + \rho(Ax^{k+1}+Bz^{k+1}-c)$
+1.  $x$ -更新：
+
+$$x^{k+1} = \text{argmin}_x L_\rho(x,z^k,y^k)$$
+
+3.  $z$ -更新：  
+
+$$z^{k+1} = \text{argmin}_z L_\rho(x^{k+1},z,y^k)$$
+
+4. 对偶更新：  
+
+$$y^{k+1} = y^k + \rho(Ax^{k+1}+Bz^{k+1}-c)$$
 
 ### 3.3 缩放形式
 令 $u = y/\rho$ ，得到缩放形式：
